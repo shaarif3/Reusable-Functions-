@@ -11,17 +11,18 @@
 
 // Activity!!
 
-const obj = {
+const bioData = {
   user: "Shaarif",
-  age: "",
+  age: 22,
   phone: "",
   address: "",
-  email: "abc@gmail.com",
+  email: "",
 
 };
-let Error = [];
 
-const throwErrors = () => {
+const throwErrors = (obj) => {
+let Errors = [];
+
   //   console.log(obj, "check");
   objLength = Object.keys(obj).length;
   // console.log(objLength)
@@ -31,7 +32,7 @@ const throwErrors = () => {
     var val = obj[key];
     // console.log(val,"key val")
     if (val === "") {
-      Error.push(`${key} is missing`);
+      Errors.push(`${key} is missing`);
 
       //   console.log(Error);
       // console.log("fill in the given fields first that are", array)
@@ -40,8 +41,8 @@ const throwErrors = () => {
     // console.log(key,val)
     // console.log(val)
   }
-  return Error;
+  return Errors;
 };
 
-const result = throwErrors();
+const result = throwErrors(bioData);
 console.log(result);
