@@ -7,41 +7,47 @@ let obj = {
   mobile: "",
   isActive: false,
 };
+const treatUser=(user)=>{
+const err=getErrors(user)
+if(err) return 
+const user=validation(user)
 
+
+}
 const validation = (inp) => {
   let finalObj = {};
-  let errArray = [];
-  let obj_keys = Object.keys(inp);
-  obj_keys.map((item) => {
-    // console.log(item, ":" , inp[item])
-    if (obj[item] == "") {
-      errArray.push(`${item} field is empty`);
-      return;
-    }
-    if (item === "mobile" && inp[item].length != 11) {
-      errArray.push(`${item} field must contain 11-digits`);
-      return;
-    }
-    if (item === "cnic" && inp[item].length != 13) {
-      errArray.push(`${item} field must contain 13-digits`);
-      return;
-    }
-  });
+  // let errArray = [];
+  // let obj_keys = Object.keys(inp);
+  // obj_keys.map((item) => {
+  //   // console.log(item, ":" , inp[item])
+  //   if (obj[item] == "") {
+  //     errArray.push(`${item} field is empty`);
+  //     return;
+  //   }
+  //   if (item === "mobile" && inp[item].length != 11) {
+  //     errArray.push(`${item} field must contain 11-digits`);
+  //     return;
+  //   }
+  //   if (item === "cnic" && inp[item].length != 13) {
+  //     errArray.push(`${item} field must contain 13-digits`);
+  //     return;
+  //   }
+  // });
 
-  Object.keys(inp).map((set) => {
-    if (set === "father") {
-      finalObj.father = inp[set];
-    }
-    if (set === "cnic") {
-      finalObj.cnic = inp[set];
-    }
-    if (set === "isActive") {
-      finalObj.isActive = inp[set];
-    }
-    if (set === "mobile") {
-      finalObj.mobile = inp[set];
-    }
-  });
+  // Object.keys(inp).map((set) => {
+  //   if (set === "father") {
+  //     finalObj.father = inp[set];
+  //   }
+  //   if (set === "cnic") {
+  //     finalObj.cnic = inp[set];
+  //   }
+  //   if (set === "isActive") {
+  //     finalObj.isActive = inp[set];
+  //   }
+  //   if (set === "mobile") {
+  //     finalObj.mobile = inp[set];
+  //   }
+  // });
 
   finalObj.name = mergeName(obj);
   finalObj.uid = genUID();
@@ -87,4 +93,40 @@ const Formator = (number, digits, howMany) => {
   }
 };
 
+const getErrors=(inp)=>{
+  let finalObj = {};
+  let errArray = [];
+  let obj_keys = Object.keys(inp);
+  obj_keys.map((item) => {
+    // console.log(item, ":" , inp[item])
+    if (obj[item] == "") {
+      errArray.push(`${item} field is empty`);
+      return;
+    }
+    if (item === "mobile" && inp[item].length != 11) {
+      errArray.push(`${item} field must contain 11-digits`);
+      return;
+    }
+    if (item === "cnic" && inp[item].length != 13) {
+      errArray.push(`${item} field must contain 13-digits`);
+      return;
+    }
+  });
+  Object.keys(inp).map((set) => {
+    if (set === "father") {
+      finalObj.father = inp[set];
+    }
+    if (set === "cnic") {
+      finalObj.cnic = inp[set];
+    }
+    if (set === "isActive") {
+      finalObj.isActive = inp[set];
+    }
+    if (set === "mobile") {
+      finalObj.mobile = inp[set];
+    }
+  });
+  console.log(finalObj);
+  console.log(errArray);
+}
 let result = validation(obj);
